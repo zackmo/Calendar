@@ -65,6 +65,19 @@ th {
 
 }
 
+.selected {
+
+	color: #ecf0f1;
+	border-radius: 100%; 
+	border: 2px solid #2980b9;
+	height: 34px;
+	width: 34px;
+	line-height: 34px;
+	animation-name: animate;
+	animation-duration: 100ms;
+
+}
+
 .past {
 
 	color: #1f1f1f;
@@ -98,6 +111,22 @@ a:active {
 i {
 
 	padding: 25px;
+
+}
+
+i:hover, div:hover{
+
+	cursor: pointer;
+
+}
+
+@keyframes animate {
+
+	0%		{transform: scale(0.6);}
+	25%		{transform: scale(0.7);}
+	50% 	{transform: scale(0.9);}
+	75%	 	{transform: scale(0.9);}
+	100% 	{transform: scale(1);}
 
 }
 

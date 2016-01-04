@@ -52,16 +52,16 @@ var buildCalendar = function (date) {
 		}
 
 		else {							//the month has begun
-			if (i == day && today.getMonth() == staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) {
+			if (i == day + firstDay && today.getMonth() == staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) {
 				calRow.append("<td class='today'><div>" + j + "</div></td>");		//create a cell with the id 'today' to identify the current day
 				j++;
 			}
-			if ((i < day && today.getMonth() == staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getMonth() < staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getFullYear() < staticToday.getFullYear())) {
-					calRow.append("<td class='past'>" + j + "</td>");
+			if ((i < day + firstDay && today.getMonth() == staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getMonth() < staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getFullYear() < staticToday.getFullYear())) {
+					calRow.append("<td class='past'><div>" + j + "</div></td>");
 					j++;
 			}
-			if ((i > day && today.getMonth() == staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getMonth() > staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getFullYear() > staticToday.getFullYear()) ) {
-					calRow.append("<td>" + j + "</td>");	//add the day to the calendar
+			if ((i > day + firstDay && today.getMonth() == staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getMonth() > staticToday.getMonth() && today.getFullYear() == staticToday.getFullYear()) || (today.getFullYear() > staticToday.getFullYear()) ) {
+					calRow.append("<td class='future'><div>" + j + "</div></td>");	//add the day to the calendar
 					j++;
 			}
 		}
@@ -81,6 +81,11 @@ var buildCalendar = function (date) {
 		today.setMonth(today.getMonth() + 1);
 		buildCalendar(today);
 
+	});
+
+	$("div").click(function() {
+		$("div").removeClass("selected");
+		$(this).addClass("selected");
 	});
 };
 
